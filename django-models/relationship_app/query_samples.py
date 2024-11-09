@@ -1,3 +1,7 @@
-from django.db import models
+from models import Author,Book,Library,Librarian
 
-books = Book
+author = Author.objects.get(name = "J.K. Rowling")
+
+books = Book.objects.all()
+
+librarian = Librarian.objects.get(Library = "mktba")
