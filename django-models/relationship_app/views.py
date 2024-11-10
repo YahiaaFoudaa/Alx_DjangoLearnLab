@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.views.generic.detail import DetailView
 from .models import Library
 from .models import Book 
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
 
 def list_books(request):
     books = Book.objects.all() 
@@ -17,3 +20,8 @@ class LibraryDetailView(DetailView):
         context = super().get_context_data(**kwargs)  
         context['book'] = self.object.books.all()
         return context
+    
+class SignUpView(CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy('login')
+    template_name = 'registration/signup.html'
