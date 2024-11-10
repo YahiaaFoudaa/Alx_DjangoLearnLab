@@ -7,7 +7,7 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from django.contrib.auth import login
 
-from django.contrib.auth.models import User
+
 
 def list_books(request):
     books = Book.objects.all() 
@@ -28,3 +28,6 @@ class register(CreateView):
     form_class = UserCreationForm()
     success_url = reverse_lazy('login')
     template_name = 'relationship_app/register.html'
+
+
+
