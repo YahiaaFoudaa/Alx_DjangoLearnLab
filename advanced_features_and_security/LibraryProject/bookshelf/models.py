@@ -9,9 +9,7 @@ class Book(models.Model):
     author = models.CharField(max_length=100)
     publication_year = models.IntegerField()
 
-class user(User):
-    email = models.EmailField(unique=True)
-    password = models.CharField(max_length=100)
+
 
 
 class CustomUserManager(BaseUserManager):
@@ -49,9 +47,12 @@ class CustomUserManager(BaseUserManager):
         ]
 
 class CustomUser(AbstractUser):
+    email = models.EmailField(unique=True)
     date_of_birth = models.DateField(null=True, blank=True)
     profile_photo = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
+    is_admin = models.BooleanField(default=False)
     objects = CustomUserManager()
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = 'date_of_birth', 'profile_photo'
+    
