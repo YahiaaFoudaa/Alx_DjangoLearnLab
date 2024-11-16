@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from django.contrib.auth.backends import BaseBackend
+from django.contrib.auth.models import BaseUserManager
 from django.contrib.auth.models import User
 
 class Book(models.Model):
@@ -13,7 +13,7 @@ class user(User):
     password = models.CharField(max_length=100)
 
 
-class CustomerUserManager(BaseBackend):
+class CustomerUserManager(BaseUserManager):
     def create_user(self, email, password=None, date_of_birth=None, profile_photo=None):
         if not email:
             raise ValueError('Users must have an email address')
