@@ -13,7 +13,7 @@ class user(User):
     password = models.CharField(max_length=100)
 
 
-class CustomerUserManager(BaseUserManager):
+class CustomUserManager(BaseUserManager):
     def create_user(self, email, password=None, date_of_birth=None, profile_photo=None):
         if not email:
             raise ValueError('Users must have an email address')
