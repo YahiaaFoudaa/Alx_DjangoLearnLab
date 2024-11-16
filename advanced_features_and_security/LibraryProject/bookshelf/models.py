@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.models import BaseUserManager
 from django.contrib.auth.models import User
+from django.contrib.auth.models import Group, Permission
 
 
 class Book(models.Model):
@@ -56,3 +57,15 @@ class CustomUser(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = 'date_of_birth', 'profile_photo'
     
+editors_group, created = Group.objects.get_or_create(name='Editors')
+viewers_group, created = Group.objects.get_or_create(name='Viewers')
+admins_group, created = Group.objects.get_or_create(name='Admins')
+
+can_edit_permission = Permission.objects.get(codename='can_edit')
+can_create_permission = Permission.objects.get(codename='can_create')
+can_view_permission = Permission.objects.get(codename='can_view')
+can_delete_permission = Permission.objects.get(codename='can_delete')
+
+editors_group.permissions.add(can_edit_permission, can_create_permission)
+viewers_group.permissions.add(can_view_permission)
+admins_group.permissions.add(can_edit_permission, can_create_permission, can_view_permission, can_delete_permission)
