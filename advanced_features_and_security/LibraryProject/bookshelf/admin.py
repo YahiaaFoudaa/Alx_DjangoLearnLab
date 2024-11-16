@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Book, CustomUser
+from .models import Book, CustomUser, CustomUserManager
 from django.contrib.auth.admin import UserAdmin
 
 
@@ -8,7 +8,7 @@ class BookAdmin(admin.ModelAdmin):
     list_filter = ('author', 'publication_year')
     search_fields = ('title', 'author')
 
-class CustomerUserAdmin(UserAdmin):
+class CustomUserAdmin(UserAdmin):
     list_display = ('email', 'date_of_birth', 'profile_photo', 'is_admin')
     list_filter = ('is_admin', 'date_of_birth')
     fieldsets = (
@@ -20,4 +20,4 @@ class CustomerUserAdmin(UserAdmin):
     ordering = ('email',)
     
 admin.site.register(Book, BookAdmin)
-admin.site.register(CustomUser, CustomerUserAdmin)
+admin.site.register(CustomUser, CustomUserAdmin)
