@@ -22,9 +22,5 @@ class CustomUpdateView(generics.UpdateAPIView):
     serializer_class = BookSerializer
     permission_classes = [IsAuthenticated]
 
-class CustomPermission(permissions.BasePermission):
-    def has_permission(self, request, view):
-        if request.method in ['POST', 'PUT', 'DELETE']:
-            return request.user.is_authenticated
-        return True
+
 
