@@ -21,5 +21,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blog.urls')),
     path('', include('django.contrib.auth.urls')),
-    path('profile/', views.profile , name='profile'),
 ]

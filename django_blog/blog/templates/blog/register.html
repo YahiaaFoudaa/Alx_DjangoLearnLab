@@ -1,28 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Registration</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
-</head>
-<body>
-    <h2>User Registration</h2>
-    <form method="post">
-        {% csrf_token %}
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username"><br>
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email"><br>
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password"><br>
-        <label for="confirm_password">Confirm Password:</label><br>
-        <input type="password" id="confirm_password" name="confirm_password"><br>
-        <input type="submit" value="Register">
-        {% if error %}
-            <p style="color: red;">{{ error }}</p>
-        {% endif %}
-    </form>
-</body>
-</html>
+{% extends 'blog/base.html' %} {%block title %} register {% endblock %}
+
+{%load static %} 
+
+{% block content%}
+<form method = 'post'>
+    {% csrf_token %}
+    {{form}}
+    <button>register</button>
+</form>
+<a href = "{% url 'login' %}"> already have an account ? </a>
+
+{%endblock%}
