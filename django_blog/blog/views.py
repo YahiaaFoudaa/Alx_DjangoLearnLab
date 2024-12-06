@@ -8,6 +8,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from .models import Post
 from django.contrib.auth.decorators import login_required
 
+@login_required
 def home(request):
     return render(request, 'blog/base.html')
 
