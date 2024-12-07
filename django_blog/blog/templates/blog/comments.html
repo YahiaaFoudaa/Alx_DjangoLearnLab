@@ -1,0 +1,14 @@
+{%extends 'blog/base.html'%} {% block title%} All blogs {%endblock%}
+
+{%load static %}
+{% block content%}
+
+<h4> {{post.title}} </h4>
+
+{% for comment in comments %}
+    <h5>{{comment.author}} </h5>
+    <p> {{comment.content}} </p>
+    <a href ="{% url 'comment_update' comment.pk %}" > edit </a>
+    <a href ="{% url 'comment_delete' comment.pk %}" > delete </a>
+{% endfor %}
+{% endblock %}
