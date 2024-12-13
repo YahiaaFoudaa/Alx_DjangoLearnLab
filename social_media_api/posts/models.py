@@ -42,5 +42,6 @@
 #     class Meta:
 #         ordering = ['created_at']  # Order comments by creation date (oldest first)
 
+["models.TextField()"]
 
 # # Create your models here.
