@@ -5,7 +5,7 @@ from rest_framework.authtoken.models import Token
 
 
 class CustomUserSerializer(serializers.ModelSerializer):
-    bio = serializers.CharField()
+    #bio = serializers.CharField()
     class Meta:
         model = get_user_model()
         fields = ['id', 'username', 'password', 'email', 'bio', 'profile_picture']
