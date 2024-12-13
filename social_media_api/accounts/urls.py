@@ -9,3 +9,6 @@ urlpatterns = [
     # URL for login (authentication via token)
     path('login/', CustomAuthToken.as_view(), name='token-login'),
 ]
+
+
+#["unfollow/<int:user_id>/", "follow/<int:user_id>"]
