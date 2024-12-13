@@ -35,3 +35,5 @@ class CustomAuthToken(ObtainAuthToken):
         })
 
 # Create your views here.
+
+#["generics.GenericAPIView", "permissions.IsAuthenticated", "CustomUser.objects.all()"]
